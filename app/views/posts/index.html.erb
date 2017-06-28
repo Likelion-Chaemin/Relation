@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h1>CRUD를 만들어보자</h1>
+    <h2>댓글과 좋아요도 만들어보자</h2>
+    <a href="/posts/new" data-method="post">게시글 쓰러가기</p></a>
+    <p>게시글 제목들</p>
+    <p></p>
+  </div>
+  <div class="row">
+    <% @posts.reverse_each do |p| %>
+    <hr>
+    제목:  <a href="/posts/post/<%= p.id %>"><%= p.title %></a>
+    <br>
+    시간:  <%= p.created_at %>
+    <hr>
+    <% end %>
+  </div>
+</div>
