@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
     @comments = Comment.new
     @comments.user_id = current_user.id
     @comments.post_id = params[:post_id]
-    @comments.content = params[:comments_content]
+    @comments.content = params[:content]
     @comments.save
-    redirect_to "/posts/post/#{params[:post_id]}"
+
+    render json: { content: @comments.content }
   end
 
   def update
