@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @posts = Post.new
+    @posts.user_id = current_user.id
     @posts.title = params[:title]
     @posts.content = params[:content]
     @posts.save
@@ -18,17 +19,17 @@ class PostsController < ApplicationController
   end
 
   def post
-    @posts = Post.find(params[:p_id])
+    @posts = Post.find(params[:post_id])
     # routes에서도 params 를 가져올 수 있다. 위의 경우 주소창에 있는 id를 params로 가져온 것.
   end
 
 # Update
   def update
-    @posts = Post.find(params[:p_id])
+    @posts = Post.find(params[:post_id])
   end
 
   def realUpdate
-    @posts = Post.find(params[:p_id])
+    @posts = Post.find(params[:post_id])
     @posts.title = params[:updatetitle]
     @posts.content = params[:updatecontent]
     @posts.save
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
 # destroy
   def destroy
-    @posts = Post.find(params[:p_id])
+    @posts = Post.find(params[:post_id])
     @posts.destroy
     redirect_to "/"
   end
