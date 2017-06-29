@@ -27,12 +27,12 @@
   <br>
   <div class="row" id='comment_list<%=@posts.id%>'>
     <% @posts.comments.each do |c| %>
-    <p>댓글 :  <%= c.content %> </p>
-  </div>
-  <div class='row'>
-    <a href="/comments/update/<%= c.id %>" data-method="post">수정하기</a>
-    <a href="/comments/destroy/<%= c.id %>" data-method="post">삭제하기</a>
-    <hr>
+      <p>댓글 :  <%= c.content %> </p>
+      <div class='row'>
+        <a href="/comments/update/<%= c.id %>" data-method="post">수정하기</a>
+        <a href="/comments/destroy/<%= c.id %>" data-method="post">삭제하기</a>
+      </div>
+      <hr>
     <% end %>
   </div>
 </div>
@@ -49,15 +49,15 @@
   	 method: "POST",
   	 url: "/comments/create/" + post_id,
   	 data: {
-  	 content: comment_area.val()
+  	   content: comment_area.val()
   	 },
   	 dataType: "json",
   	 success: function(data) {
-  	 console.log(data);
-  	 const str = ["<p>", data.content, "</p>", "</div>"].join(" ");
-  	 $("#comment_list" + post_id).append(str);
-  					comment_area.val("");
-  	 return;
+  	  // console.log(data.content);
+  	  const str = "<p>" + data.content + "</p>";
+  	  $("#comment_list" + post_id).append(str);
+  		comment_area.val("");
+  	  return;
   	 }
 	  });
 	 });
