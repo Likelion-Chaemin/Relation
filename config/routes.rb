@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   post 'posts/update/:p_id' => 'posts#update'
   post 'posts/realUpdate/:p_id' => 'posts#realUpdate'
   post 'posts/destroy/:p_id' => 'posts#destroy'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  post '/comments/create/:p_id' => 'comments#create'
+  post '/comments/update/:c_id' => 'comments#update'
+  post '/comments/realUpdate/:c_id' => 'comments#realUpdate'
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

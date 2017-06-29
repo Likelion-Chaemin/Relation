@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @posts = Post.new
+    @posts.user_id = current_user.id
     @posts.title = params[:title]
     @posts.content = params[:content]
     @posts.save
