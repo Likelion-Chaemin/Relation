@@ -9,7 +9,7 @@
   <div class="row">
     <% @posts.reverse_each do |p| %>
     <hr>
-    제목:  <a href="/posts/post/<%= p.id %>"><%= p.title %></a>
+    제목:  <%= p.id %> :<a href="/posts/post/<%= p.id %>"><%= p.title %></a>
     <br>
     시간:  <%= p.created_at %>
     <hr>
